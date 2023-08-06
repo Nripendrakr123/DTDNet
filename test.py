@@ -229,7 +229,19 @@ class TestModule(object):
                     n_crop += 1
                     classes_name, colors = self.classi_model.get_output(crop_image)
 
+                    cen_pts = np.mean(box, axis=0)
+                    # cv2.line(ori_image, (int(cen_pts[0]), int(cen_pts[1])), (int(tt[0]), int(tt[1])), (0,0,255),1,1)
+                    # cv2.line(ori_image, (int(cen_pts[0]), int(cen_pts[1])), (int(rr[0]), int(rr[1])), (255,0,255),1,1)
+                    # cv2.line(ori_image, (int(cen_pts[0]), int(cen_pts[1])), (int(bb[0]), int(bb[1])), (0,255,0),1,1)
+                    # cv2.line(ori_image, (int(cen_pts[0]), int(cen_pts[1])), (int(ll[0]), int(ll[1])), (255,0,0),1,1)
 
+                    # cv2.line(ori_image, (int(cen_pts[0]), int(cen_pts[1])), (int(tl[0]), int(tl[1])), (0,0,255),1,1)
+                    # cv2.line(ori_image, (int(cen_pts[0]), int(cen_pts[1])), (int(tr[0]), int(tr[1])), (255,0,255),1,1)
+                    # cv2.line(ori_image, (int(cen_pts[0]), int(cen_pts[1])), (int(br[0]), int(br[1])), (0,255,0),1,1)
+                    # cv2.line(ori_image, (int(cen_pts[0]), int(cen_pts[1])), (int(bl[0]), int(bl[1])), (255,0,0),1,1)
+
+                    # box = cv2.boxPoints(cv2.minAreaRect(box))
+                    # ori_image = cv2.drawContours(ori_image, [np.int0(box)], -1, (0,255,0),1,1)
 
                     ori_image = cv2.drawContours(ori_image, [np.int0(box)], 0, colors, 4, 1)
                     cv2.putText(ori_image, '{:.2f} {}'.format(score, classes_name), (int(box[1][0]), int(box[1][1])),

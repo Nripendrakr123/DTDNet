@@ -2,13 +2,13 @@ import argparse
 import test
 import eval
 from datasets.dataset_dota import DOTA
-from models import ctrbox_net
+from models import DTDNet
 from utils import decoder
 import os
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='BBAVectors Implementation')
+    parser = argparse.ArgumentParser(description='DTDNet Model')
     parser.add_argument('--num_epoch', type=int, default=1000, help='Number of epochs')
     parser.add_argument('--batch_size', type=int, default=4, help='Number of batch size')
     parser.add_argument('--num_workers', type=int, default=10, help='Number of workers')
@@ -19,7 +19,7 @@ def parse_args():
     parser.add_argument('--conf_thresh', type=float, default=0.07, help='Confidence threshold, 0.1 for general evaluation')
     parser.add_argument('--ngpus', type=int, default=1, help='Number of gpus, ngpus>1 for multigpu')
     parser.add_argument('--resume_train', type=str, default='', help='Weights resumed in training')
-    parser.add_argument('--resume', type=str, default='/home/nripendra/BBAVectors-Oriented-Object-Detection/weights_dota_without_atten/model_150.pth', help='Weights resumed in testing and evaluation')
+    parser.add_argument('--resume', type=str, default='/home/nripendra/weights_dota_without_atten/model_150.pth', help='Weights resumed in testing and evaluation')
     parser.add_argument('--dataset', type=str, default='dota', help='Name of dataset')
     parser.add_argument('--data_dir', type=str, default='/home/nripendra/Multiple_treatment&Diagnosis/Experiment/DATA/Eval_matrix_data/', help='Data directory')
     parser.add_argument('--phase', type=str, default='test', help='Phase choice= {test, eval}')
@@ -37,7 +37,7 @@ if __name__ == '__main__':
              'cls_theta': 1
              }
     down_ratio = 4
-    model = ctrbox_net.CTRBOX(heads=heads,
+    model = DTDNet.Teeth_detection(heads=heads,
                               pretrained=True,
                               down_ratio=down_ratio,
                               final_kernel=1,
