@@ -1,6 +1,0 @@
-'''
-
-llllllllllllllllllllllllll
-
-my_model
-'''
