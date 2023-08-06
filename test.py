@@ -229,7 +229,7 @@ class TestModule(object):
                     n_crop += 1
                     classes_name, colors = self.classi_model.get_output(crop_image)
 
-          
+
 
                     ori_image = cv2.drawContours(ori_image, [np.int0(box)], 0, colors, 4, 1)
                     cv2.putText(ori_image, '{:.2f} {}'.format(score, classes_name), (int(box[1][0]), int(box[1][1])),
