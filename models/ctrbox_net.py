@@ -5,9 +5,9 @@ from .model_parts import CombinationModule
 from . import resnet
 
 
-class CTRBOX(nn.Module):
+class Teeth_detection(nn.Module):
     def __init__(self, heads, pretrained, down_ratio, final_kernel, head_conv):
-        super(CTRBOX, self).__init__()
+        super(Teeth_detection, self).__init__()
         channels = [3, 64, 256, 512, 1024, 2048]
         assert down_ratio in [2, 4, 8, 16]
         self.l1 = int(np.log2(down_ratio))
